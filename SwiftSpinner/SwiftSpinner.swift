@@ -39,13 +39,15 @@ public class SwiftSpinner: UIView {
         vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: blurEffect))
         addSubview(vibrancyView)
         
-        let titleScale: CGFloat = 0.85
+        let titleScale: CGFloat = 0.6
         titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
         titleLabel.font = defaultTitleFont
         titleLabel.numberOfLines = 0
         titleLabel.textAlignment = .Center
         titleLabel.lineBreakMode = .ByWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.1
+        titleLabel.font = UIFont.systemFontOfSize(12)
         
         vibrancyView.contentView.addSubview(titleLabel)
         blurView.contentView.addSubview(vibrancyView)
@@ -53,7 +55,7 @@ public class SwiftSpinner: UIView {
         outerCircleView.frame.size = frameSize
         
         outerCircle.path = UIBezierPath(ovalInRect: CGRect(x: 0.0, y: 0.0, width: frameSize.width, height: frameSize.height)).CGPath
-        outerCircle.lineWidth = 8.0
+        outerCircle.lineWidth = 6.0
         outerCircle.strokeStart = 0.0
         outerCircle.strokeEnd = 0.45
         outerCircle.lineCap = kCALineCapRound
@@ -68,7 +70,7 @@ public class SwiftSpinner: UIView {
         
         innerCircleView.frame.size = frameSize
         
-        let innerCirclePadding: CGFloat = 12
+        let innerCirclePadding: CGFloat = 8
         innerCircle.path = UIBezierPath(ovalInRect: CGRect(x: innerCirclePadding, y: innerCirclePadding, width: frameSize.width - 2*innerCirclePadding, height: frameSize.height - 2*innerCirclePadding)).CGPath
         innerCircle.lineWidth = 4.0
         innerCircle.strokeStart = 0.5
@@ -318,7 +320,7 @@ public class SwiftSpinner: UIView {
     private var vibrancyView: UIVisualEffectView!
     
     var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)!
-    let frameSize = CGSize(width: 200.0, height: 200.0)
+    let frameSize = CGSize(width: 100.0, height: 100.0)
     
     private lazy var outerCircleView = UIView()
     private lazy var innerCircleView = UIView()
