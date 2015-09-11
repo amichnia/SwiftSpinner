@@ -47,7 +47,6 @@ public class SwiftSpinner: UIView {
         titleLabel.lineBreakMode = .ByWordWrapping
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.1
-        titleLabel.font = UIFont.systemFontOfSize(12)
         
         vibrancyView.contentView.addSubview(titleLabel)
         blurView.contentView.addSubview(vibrancyView)
@@ -319,7 +318,7 @@ public class SwiftSpinner: UIView {
     private var blurView: UIVisualEffectView!
     private var vibrancyView: UIVisualEffectView!
     
-    var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 22.0)!
+    var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 12.0)!
     let frameSize = CGSize(width: 100.0, height: 100.0)
     
     private lazy var outerCircleView = UIView()
