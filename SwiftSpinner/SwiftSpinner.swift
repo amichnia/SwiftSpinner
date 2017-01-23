@@ -27,8 +27,8 @@ open class SwiftSpinner: UIView {
         blurView = UIVisualEffectView(effect: blurEffect)
         addSubview(blurView)
         
-        vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: blurEffect))
-        addSubview(vibrancyView)
+//        vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(blurEffect: blurEffect))
+//        addSubview(vibrancyView)
         
         let titleScale: CGFloat = 0.6
         titleLabel.frame.size = CGSize(width: frameSize.width * titleScale, height: frameSize.height * titleScale)
@@ -39,8 +39,9 @@ open class SwiftSpinner: UIView {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.1
         
-        vibrancyView.contentView.addSubview(titleLabel)
-        blurView.contentView.addSubview(vibrancyView)
+//        vibrancyView.contentView.addSubview(titleLabel)
+//        blurView.contentView.addSubview(vibrancyView)
+        addSubview(titleLabel)
         
         outerCircleView.frame.size = frameSize
         
@@ -56,7 +57,9 @@ open class SwiftSpinner: UIView {
         outerCircle.strokeStart = 0.0
         outerCircle.strokeEnd = 1.0
         
-        vibrancyView.contentView.addSubview(outerCircleView)
+//        vibrancyView.contentView.addSubview(outerCircleView)
+        addSubview(outerCircleView)
+        titleLabel.textColor = UIColor.white
         
         innerCircleView.frame.size = frameSize
         
@@ -73,7 +76,8 @@ open class SwiftSpinner: UIView {
         innerCircle.strokeStart = 0.0
         innerCircle.strokeEnd = 1.0
         
-        vibrancyView.contentView.addSubview(innerCircleView)
+//        vibrancyView.contentView.addSubview(innerCircleView)
+        addSubview(innerCircleView)
         
         isUserInteractionEnabled = true
     }
@@ -213,10 +217,10 @@ open class SwiftSpinner: UIView {
                 return
             }
             blurView.frame = bounds
-            vibrancyView.frame = blurView.bounds
-            titleLabel.center = vibrancyView.center
-            outerCircleView.center = vibrancyView.center
-            innerCircleView.center = vibrancyView.center
+//            vibrancyView.frame = blurView.bounds
+            titleLabel.center = blurView.center
+            outerCircleView.center = blurView.center
+            innerCircleView.center = blurView.center
             if let subtitle = subtitleLabel {
                 subtitle.bounds.size = subtitle.sizeThatFits(bounds.insetBy(dx: 20.0, dy: 0.0).size)
                 subtitle.center = CGPoint(x: bounds.midX, y: bounds.maxY - subtitle.bounds.midY - subtitle.font.pointSize)
@@ -273,7 +277,8 @@ open class SwiftSpinner: UIView {
                 subtitle.lineBreakMode = .byWordWrapping
                 subtitle.bounds.size = subtitle.sizeThatFits(bounds.insetBy(dx: 20.0, dy: 0.0).size)
                 subtitle.center = CGPoint(x: bounds.midX, y: bounds.maxY - subtitle.bounds.midY - subtitle.font.pointSize)
-                vibrancyView.contentView.addSubview(subtitle)
+//                vibrancyView.contentView.addSubview(subtitle)
+                addSubview(subtitle)
             }
         }
     }
@@ -302,7 +307,7 @@ open class SwiftSpinner: UIView {
     fileprivate var blurEffectStyle: UIBlurEffectStyle = .dark
     fileprivate var blurEffect: UIBlurEffect!
     fileprivate var blurView: UIVisualEffectView!
-    fileprivate var vibrancyView: UIVisualEffectView!
+//    fileprivate var vibrancyView: UIVisualEffectView!
     
     var defaultTitleFont = UIFont(name: "HelveticaNeue", size: 12.0)!
     let frameSize = CGSize(width: 100.0, height: 100.0)
